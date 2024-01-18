@@ -3,6 +3,7 @@ package com.sameer.restaurant.reservation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -25,7 +26,7 @@ public class ReservationController {
     }
     // ------------ Create a reservation ------------
     @RequestMapping(value = "/reservations", method =RequestMethod.POST)
-    public void addReservation(@RequestBody ReservationEntity reservation) {
+    public void addReservation(@Valid @RequestBody ReservationEntity reservation) {
         reservationService.addReservation(reservation);
     }
 

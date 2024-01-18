@@ -1,8 +1,8 @@
 package com.sameer.restaurant.reservation;
 
 import javax.persistence.*;
+import javax.validation.constraints.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Table(name="reservation")
@@ -13,18 +13,22 @@ public class ReservationEntity {
     private Long id;
 
     @Column
+    @NotNull(message = "Date is mandatory")
     private LocalDateTime date;
 
     @Column(name="user_id")
+    @NotNull(message = "User detail is mandatory")
     private Long userId;
 
     @Column(name="restaurant_id")
+    @NotNull(message = "restaurant detail is mandatory")
     private Long restaurantId;
 
     // Hibernate will convert camel case column names to snake case!!!
     // Don't use camelcase columns in DB
     @Column(name="party_size")
-    private int partySize;
+    @NotNull(message = "party size is mandatory")
+    private Integer partySize;
 
     public ReservationEntity() {}
 

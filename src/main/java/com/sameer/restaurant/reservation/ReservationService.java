@@ -11,7 +11,7 @@ import java.util.Optional;
 public class ReservationService {
 
     @Autowired
-    private ReservationRepository reservationRepository;
+    private com.sameer.restaurant.reservation.ReservationRepository reservationRepository;
 
     // Retrieve all rows from table and populate list with objects
     public List getAllReservations() {
@@ -21,8 +21,8 @@ public class ReservationService {
     }
 
     // Retrieves one row from table based on given id
-    public ReservationEntity getReservation(Long id) {
-        Optional<ReservationEntity> res = reservationRepository.findById(id);
+    public com.sameer.restaurant.reservation.ReservationEntity getReservation(Long id) {
+        Optional<com.sameer.restaurant.reservation.ReservationEntity> res = reservationRepository.findById(id);
         if(res != null){
             return res.get();
         } else {
@@ -32,13 +32,13 @@ public class ReservationService {
 
     // Inserts row into table
     //TODO: validate input
-    public void addReservation(ReservationEntity reservation) {
+    public void addReservation(com.sameer.restaurant.reservation.ReservationEntity reservation) {
         reservationRepository.save(reservation);
     }
 
     // Updates row in table
     //TODO: validate input
-    public void updateReservation(Long id, ReservationEntity reservation) {
+    public void updateReservation(Long id, com.sameer.restaurant.reservation.ReservationEntity reservation) {
         reservationRepository.save(reservation);
     }
 
