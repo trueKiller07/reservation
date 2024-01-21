@@ -1,0 +1,11 @@
+
+ docker pull mysql
+ docker run -p 3307:3306 --name mysqldb -e MYSQL_ROOT_PASSWORD=rootuser -e MYSQL_DATABASE=reservation mysqldb
+
+ docker network create reservation-network
+ docker network connect reservation-network mysqldb
+
+ #create spring boot docker image
+ docker build -t reservation-spring-app .
+
+ docker run -p 9090:8080 --name reservation-mysql-docker --net reservation-network  reservation-spring-app
